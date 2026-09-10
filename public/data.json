@@ -5,7 +5,15 @@
     "prof": "AOUANI",
     "icon": "💻",
     "order": 1,
+    "docs": [
+      {"name": "TP2 — Conditionnelles et Répétitives", "file": "docs/pass-info/TP2_Seance1_Conditionnelles_Repetitives.pdf"},
+      {"name": "TP3 — Les Méthodes en Java", "file": "docs/pass-info/TP3_Seance2_Methodes.pdf"},
+      {"name": "Séance 3-4 — Structures de données & Complexité", "file": "docs/pass-info/Seance3-4_Structures_Complexite.pdf"}
+    ],
     "topics": [
+      {"name": "Conditionnelles (if/else, switch)", "status": "compris", "source": "cours", "note": "TP2 Séance 1"},
+      {"name": "Boucles (for, while, do...while)", "status": "compris", "source": "cours", "note": "TP2 Séance 1"},
+      {"name": "Méthodes (void, return, paramètres)", "status": "compris", "source": "cours", "note": "TP3 Séance 2"},
       {"name": "Récursivité (factorielle, puissance, sommeTableau)", "status": "compris", "source": "les_deux", "note": "TP6 fait, traces maîtrisées"},
       {"name": "Fibonacci récursif", "status": "compris", "source": "les_deux", "note": "Cas de base + appels compris"},
       {"name": "compterChiffres / maxTableau", "status": "en_cours", "source": "tutorat", "note": "Erreurs corrigées, à pratiquer"},
@@ -14,9 +22,14 @@
       {"name": "Arbres binaires et ABR", "status": "en_cours", "source": "tutorat", "note": "Théorie + parcours vus"},
       {"name": "Parcours infixe / préfixe / postfixe", "status": "en_cours", "source": "tutorat", "note": "Mnémo appris, pas codé"},
       {"name": "Listes chaînées et tableaux dynamiques", "status": "en_cours", "source": "tutorat", "note": "Théorie comparée, pas d'exo"},
-      {"name": "Algo glouton (rendu de monnaie)", "status": "pas_commence", "source": "cours", "note": "Séance 5 slides"},
-      {"name": "Recherche dichotomique", "status": "pas_commence", "source": "cours", "note": "Séance 5 slides"},
-      {"name": "Recherche séquentielle", "status": "pas_commence", "source": "cours", "note": "Recherche.java pas fait"}
+      {"name": "Tableaux (définition, syntaxe, parcours)", "status": "pas_commence", "source": "cours", "note": "Séance 3 slides"},
+      {"name": "Chaînes de caractères", "status": "pas_commence", "source": "cours", "note": "Séance 3 slides"},
+      {"name": "Complexité des algorithmes (notation O)", "status": "pas_commence", "source": "cours", "note": "Séance 4 slides"},
+      {"name": "Recherche séquentielle", "status": "pas_commence", "source": "cours", "note": "Séance 4 slides"},
+      {"name": "Recherche dichotomique", "status": "pas_commence", "source": "cours", "note": "Séance 4 slides"},
+      {"name": "Tri Quicksort", "status": "pas_commence", "source": "cours", "note": "Séance 4 slides"},
+      {"name": "Tri Mergesort", "status": "pas_commence", "source": "cours", "note": "Séance 4 slides"},
+      {"name": "Algo glouton (rendu de monnaie)", "status": "pas_commence", "source": "cours", "note": "Séance 5 slides"}
     ]
   },
   {
@@ -25,6 +38,7 @@
     "prof": "BOUMAIZA",
     "icon": "☕",
     "order": 2,
+    "docs": [],
     "topics": [
       {"name": "Classes, attributs, constructeurs", "status": "compris", "source": "tutorat", "note": "Etudiant.java, Personne.java"},
       {"name": "Objets et instanciation (new)", "status": "compris", "source": "tutorat", "note": "CompteBancaire.java"},
@@ -41,6 +55,9 @@
     "prof": "ALKASM",
     "icon": "⚡",
     "order": 3,
+    "docs": [
+      {"name": "Cours complet électronique", "file": "docs/electronique/cours_elec.pdf"}
+    ],
     "topics": [
       {"name": "Filtres passe-bas RC", "status": "en_cours", "source": "tutorat", "note": "Formules vues"},
       {"name": "Filtres passe-haut RC", "status": "en_cours", "source": "tutorat", "note": "Formules vues"},
@@ -54,6 +71,7 @@
     "prof": "SAKR",
     "icon": "📐",
     "order": 4,
+    "docs": [],
     "topics": [
       {"name": "Parité de fonctions (paire/impaire)", "status": "en_cours", "source": "tutorat", "note": "Définitions et exemples vus"},
       {"name": "Primitives (tableau des formules)", "status": "en_cours", "source": "tutorat", "note": "Formules de base vues"},
@@ -66,8 +84,15 @@
     "prof": "FATHI",
     "icon": "🎲",
     "order": 5,
+    "docs": [
+      {"name": "Chp1 — Probabilités, premières notions", "file": "docs/probas-stats/Chp1_Probabilites.pdf"}
+    ],
     "topics": [
+      {"name": "Langage des probabilités (univers, événements)", "status": "pas_commence", "source": "cours", "note": "Chp1 section I"},
+      {"name": "Équiprobabilité et dénombrement", "status": "pas_commence", "source": "cours", "note": "Chp1"},
+      {"name": "Probabilités conditionnelles P(A|B)", "status": "pas_commence", "source": "cours", "note": "Chp1 section II"},
       {"name": "Théorème de Bayes", "status": "en_cours", "source": "tutorat", "note": "Formule + exo fait"},
+      {"name": "Indépendance de deux événements", "status": "pas_commence", "source": "cours", "note": "Chp1 section II"},
       {"name": "Statistiques descriptives", "status": "pas_commence", "source": "cours", "note": ""}
     ]
   },
@@ -77,6 +102,7 @@
     "prof": "RADI",
     "icon": "🖥️",
     "order": 6,
+    "docs": [],
     "topics": [
       {"name": "Introduction (rôle d'un OS)", "status": "en_cours", "source": "les_deux", "note": "Cours 09/09 + résumé"},
       {"name": "Noyau (kernel) et Pilotes (drivers)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
@@ -99,6 +125,7 @@
     "prof": "SAMAD",
     "icon": "📡",
     "order": 7,
+    "docs": [],
     "topics": []
   },
   {
@@ -107,6 +134,7 @@
     "prof": "FEMMAM",
     "icon": "🔧",
     "order": 8,
+    "docs": [],
     "topics": []
   },
   {
@@ -115,6 +143,7 @@
     "prof": "ZOGHLAMI",
     "icon": "🗄️",
     "order": 9,
+    "docs": [],
     "topics": []
   },
   {
@@ -123,6 +152,7 @@
     "prof": "KASOMBO",
     "icon": "🌱",
     "order": 10,
+    "docs": [],
     "topics": []
   },
   {
@@ -131,6 +161,7 @@
     "prof": "BEAUVAIS",
     "icon": "✍️",
     "order": 11,
+    "docs": [],
     "topics": []
   }
 ]

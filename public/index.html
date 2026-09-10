@@ -256,6 +256,34 @@
       text-overflow: ellipsis;
     }
 
+    .docs-section {
+      padding: 8px 16px 8px 62px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .docs-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+    .doc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--accent-light);
+      margin: 0 6px 6px 0;
+      transition: opacity 0.15s;
+    }
+    .doc-link:hover { opacity: 0.8; }
+    .doc-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
     .empty-msg {
       color: var(--text-faint);
       font-style: italic;
@@ -278,6 +306,7 @@
       .stat-box { padding: 8px; min-width: 70px; }
       .stat-num { font-size: 1.1rem; }
       .legend-sep { display: none; }
+      .docs-section { padding-left: 44px; }
     }
   </style>
 </head>
@@ -346,6 +375,17 @@
         var card = document.createElement("div");
         card.className = "subject-card";
 
+        var docsHtml = "";
+        var docs = s.docs || [];
+        if (docs.length > 0) {
+          var pdfIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>';
+          docsHtml = '<div class="docs-section"><div class="docs-title">Documents de cours</div>';
+          docs.forEach(function(d) {
+            docsHtml += '<a class="doc-link" href="' + d.file + '" target="_blank">' + pdfIcon + d.name + '</a>';
+          });
+          docsHtml += '</div>';
+        }
+
         var topicsHtml = "";
         topics.forEach(function(t) {
           var sourceHtml = t.source ? '<span class="source-tag source-' + t.source + '">' + (SOURCE_LABELS[t.source] || t.source) + '</span>' : '';
@@ -356,7 +396,7 @@
             '<span class="status-pill status-' + t.status + '">' + (STATUS_LABELS[t.status] || t.status) + '</span>' +
             '</div>';
         });
-        if (topics.length === 0) {
+        if (topics.length === 0 && docs.length === 0) {
           topicsHtml = '<div class="empty-msg">Programme à venir</div>';
         }
 
@@ -373,7 +413,7 @@
             '</div>' +
             '<span class="chevron">▶</span>' +
           '</div>' +
-          '<div class="topic-list">' + topicsHtml + '</div>';
+          '<div class="topic-list">' + docsHtml + topicsHtml + '</div>';
 
         card.querySelector(".subject-header").addEventListener("click", function() {
           card.classList.toggle("open");
