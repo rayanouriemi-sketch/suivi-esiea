@@ -93,6 +93,13 @@
       {"name": "Probabilités conditionnelles P(A|B)", "status": "pas_commence", "source": "cours", "note": "Chp1 section II"},
       {"name": "Théorème de Bayes", "status": "en_cours", "source": "tutorat", "note": "Formule + exo fait"},
       {"name": "Indépendance de deux événements", "status": "pas_commence", "source": "cours", "note": "Chp1 section II"},
+      {"name": "Dénombrement (Arrangements, Combinaisons)", "status": "pas_commence", "source": "cours", "note": "Former des groupes de p éléments"},
+      {"name": "Loi binomiale", "status": "pas_commence", "source": "cours", "note": "Loi discrète"},
+      {"name": "Loi de Poisson", "status": "pas_commence", "source": "cours", "note": "Loi discrète"},
+      {"name": "Loi géométrique", "status": "pas_commence", "source": "cours", "note": "Loi discrète"},
+      {"name": "Loi uniforme continue", "status": "pas_commence", "source": "cours", "note": "Loi continue"},
+      {"name": "Loi exponentielle", "status": "pas_commence", "source": "cours", "note": "Loi continue"},
+      {"name": "Loi normale", "status": "pas_commence", "source": "cours", "note": "Loi continue"},
       {"name": "Statistiques descriptives", "status": "pas_commence", "source": "cours", "note": ""}
     ]
   },
