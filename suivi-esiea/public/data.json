@@ -1,0 +1,136 @@
+[
+  {
+    "id": "pass-info",
+    "name": "PASS informatique 3A",
+    "prof": "AOUANI",
+    "icon": "💻",
+    "order": 1,
+    "topics": [
+      {"name": "Récursivité (factorielle, puissance, sommeTableau)", "status": "compris", "source": "les_deux", "note": "TP6 fait, traces maîtrisées"},
+      {"name": "Fibonacci récursif", "status": "compris", "source": "les_deux", "note": "Cas de base + appels compris"},
+      {"name": "compterChiffres / maxTableau", "status": "en_cours", "source": "tutorat", "note": "Erreurs corrigées, à pratiquer"},
+      {"name": "Piles (LIFO) — push, pop, isEmpty", "status": "en_cours", "source": "les_deux", "note": "Théorie OK, TP7 à faire"},
+      {"name": "Files (FIFO) — enqueue, dequeue", "status": "en_cours", "source": "les_deux", "note": "Théorie OK, TP7 à faire"},
+      {"name": "Arbres binaires et ABR", "status": "en_cours", "source": "tutorat", "note": "Théorie + parcours vus"},
+      {"name": "Parcours infixe / préfixe / postfixe", "status": "en_cours", "source": "tutorat", "note": "Mnémo appris, pas codé"},
+      {"name": "Listes chaînées et tableaux dynamiques", "status": "en_cours", "source": "tutorat", "note": "Théorie comparée, pas d'exo"},
+      {"name": "Algo glouton (rendu de monnaie)", "status": "pas_commence", "source": "cours", "note": "Séance 5 slides"},
+      {"name": "Recherche dichotomique", "status": "pas_commence", "source": "cours", "note": "Séance 5 slides"},
+      {"name": "Recherche séquentielle", "status": "pas_commence", "source": "cours", "note": "Recherche.java pas fait"}
+    ]
+  },
+  {
+    "id": "poo",
+    "name": "Programmation orientée objet",
+    "prof": "BOUMAIZA",
+    "icon": "☕",
+    "order": 2,
+    "topics": [
+      {"name": "Classes, attributs, constructeurs", "status": "compris", "source": "tutorat", "note": "Etudiant.java, Personne.java"},
+      {"name": "Objets et instanciation (new)", "status": "compris", "source": "tutorat", "note": "CompteBancaire.java"},
+      {"name": "Méthodes statiques vs d'instance", "status": "compris", "source": "tutorat", "note": "Calculatrice.java OK"},
+      {"name": "Héritage", "status": "en_cours", "source": "tutorat", "note": "Professeur extends Personne"},
+      {"name": "Interfaces", "status": "en_cours", "source": "tutorat", "note": "Connectable.java"},
+      {"name": "Polymorphisme", "status": "pas_commence", "source": "cours", "note": ""},
+      {"name": "Encapsulation (getters/setters)", "status": "pas_commence", "source": "cours", "note": ""}
+    ]
+  },
+  {
+    "id": "electronique",
+    "name": "PASS électronique 3A",
+    "prof": "ALKASM",
+    "icon": "⚡",
+    "order": 3,
+    "topics": [
+      {"name": "Filtres passe-bas RC", "status": "en_cours", "source": "tutorat", "note": "Formules vues"},
+      {"name": "Filtres passe-haut RC", "status": "en_cours", "source": "tutorat", "note": "Formules vues"},
+      {"name": "Diagrammes de Bode (gain + phase)", "status": "en_cours", "source": "tutorat", "note": "Construction vue"},
+      {"name": "Fonctions de transfert H(jω)", "status": "pas_commence", "source": "cours", "note": ""}
+    ]
+  },
+  {
+    "id": "math",
+    "name": "PASS Math 3A FISA",
+    "prof": "SAKR",
+    "icon": "📐",
+    "order": 4,
+    "topics": [
+      {"name": "Parité de fonctions (paire/impaire)", "status": "en_cours", "source": "tutorat", "note": "Définitions et exemples vus"},
+      {"name": "Primitives (tableau des formules)", "status": "en_cours", "source": "tutorat", "note": "Formules de base vues"},
+      {"name": "Intégration par parties (IPP)", "status": "en_cours", "source": "tutorat", "note": "Méthode uv - ∫v du vue"}
+    ]
+  },
+  {
+    "id": "probas-stats",
+    "name": "Probabilités et Statistiques",
+    "prof": "FATHI",
+    "icon": "🎲",
+    "order": 5,
+    "topics": [
+      {"name": "Théorème de Bayes", "status": "en_cours", "source": "tutorat", "note": "Formule + exo fait"},
+      {"name": "Statistiques descriptives", "status": "pas_commence", "source": "cours", "note": ""}
+    ]
+  },
+  {
+    "id": "systemes-exploitation",
+    "name": "Systèmes d'exploitation",
+    "prof": "RADI",
+    "icon": "🖥️",
+    "order": 6,
+    "topics": [
+      {"name": "Introduction (rôle d'un OS)", "status": "en_cours", "source": "les_deux", "note": "Cours 09/09 + résumé"},
+      {"name": "Noyau (kernel) et Pilotes (drivers)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Utilisateurs et Sessions (UID, root)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Système de Fichier (/, ext4, NTFS)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Permissions et Droits (chmod, rwx)", "status": "compris", "source": "les_deux", "note": "QCM + pratique OK"},
+      {"name": "Shell et commandes de base", "status": "compris", "source": "les_deux", "note": "ls, cd, mkdir, cp, mv, grep..."},
+      {"name": "Commandes réseau (ip a, ss, ping)", "status": "compris", "source": "tutorat", "note": "Testé sur WSL"},
+      {"name": "Scan de ports (nmap TCP/UDP)", "status": "compris", "source": "tutorat", "note": "Nmap installé et testé"},
+      {"name": "Gestion de la Mémoire (RAM, swap)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Processus (PID, fork, ps, kill)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Variables d'Environnement (PATH)", "status": "en_cours", "source": "les_deux", "note": "Résumé fait"},
+      {"name": "Scripts Shell (.sh, boucles, if)", "status": "pas_commence", "source": "cours", "note": ""},
+      {"name": "Gestion des Paquets (apt, dpkg)", "status": "compris", "source": "les_deux", "note": "apt install nmap OK"}
+    ]
+  },
+  {
+    "id": "tns",
+    "name": "Traitement numérique du signal",
+    "prof": "SAMAD",
+    "icon": "📡",
+    "order": 7,
+    "topics": []
+  },
+  {
+    "id": "archi",
+    "name": "Architecture d'un système",
+    "prof": "FEMMAM",
+    "icon": "🔧",
+    "order": 8,
+    "topics": []
+  },
+  {
+    "id": "bdd",
+    "name": "Bases de données",
+    "prof": "ZOGHLAMI",
+    "icon": "🗄️",
+    "order": 9,
+    "topics": []
+  },
+  {
+    "id": "pairse",
+    "name": "PAIRSE - Projet à impact RSE",
+    "prof": "KASOMBO",
+    "icon": "🌱",
+    "order": 10,
+    "topics": []
+  },
+  {
+    "id": "voltaire",
+    "name": "Projet Voltaire",
+    "prof": "BEAUVAIS",
+    "icon": "✍️",
+    "order": 11,
+    "topics": []
+  }
+]

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suivi ESIEA — Rayan</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fafaf8;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --text-faint: #9a9a9a;
+      --border: #e8e6e1;
+      --border-light: #f0eeea;
+      --accent: #3d5a80;
+      --accent-light: #e8eef4;
+      --compris: #3a8a5c;
+      --compris-bg: #e8f5ee;
+      --en-cours: #c47d1a;
+      --en-cours-bg: #fdf3e4;
+      --pas-commence: #8a8a8a;
+      --pas-commence-bg: #f0f0f0;
+      --tag-cours: #4a7fb5;
+      --tag-cours-bg: #e4eef7;
+      --tag-tutorat: #b55a4a;
+      --tag-tutorat-bg: #f7e8e4;
+      --tag-both: #7a6b3d;
+      --tag-both-bg: #f5f0e0;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-hover: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141820;
+        --bg-card: #1c2130;
+        --bg-card-hover: #222838;
+        --text: #e4e2de;
+        --text-muted: #9a9a9a;
+        --text-faint: #666;
+        --border: #2a3040;
+        --border-light: #232838;
+        --accent: #6d9fd4;
+        --accent-light: #1e2a3a;
+        --compris: #5cb87a;
+        --compris-bg: #1a2e22;
+        --en-cours: #e0a040;
+        --en-cours-bg: #2a2418;
+        --pas-commence: #777;
+        --pas-commence-bg: #252525;
+        --tag-cours: #6da8e0;
+        --tag-cours-bg: #1a2a3a;
+        --tag-tutorat: #e07a6a;
+        --tag-tutorat-bg: #3a2220;
+        --tag-both: #c8b060;
+        --tag-both-bg: #2a2818;
+        --shadow: 0 1px 3px rgba(0,0,0,0.2);
+        --shadow-hover: 0 2px 8px rgba(0,0,0,0.3);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      padding: 24px 16px;
+      max-width: 820px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    .header { margin-bottom: 28px; }
+    .header h1 {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      text-wrap: balance;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+    .semester-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 80px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 0.78rem;
+    }
+    .legend-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .legend-sep { width: 1px; background: var(--border); margin: 0 4px; }
+    .legend-item { display: flex; align-items: center; gap: 5px; color: var(--text-muted); }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.15s;
+    }
+    .subject-card:hover { box-shadow: var(--shadow-hover); }
+
+    .subject-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .subject-header:hover { background: var(--bg-card-hover); }
+
+    .subject-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+      background: var(--accent-light);
+    }
+
+    .subject-info { flex: 1; min-width: 0; }
+    .subject-name {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    .subject-prof { font-size: 0.75rem; color: var(--text-faint); }
+
+    .subject-progress { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .progress-bar-bg {
+      width: 56px;
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill { height: 100%; border-radius: 3px; }
+    .progress-pct {
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+      min-width: 30px;
+      text-align: right;
+    }
+
+    .chevron {
+      color: var(--text-faint);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+    .subject-card.open .chevron { transform: rotate(90deg); }
+
+    .topic-list { display: none; border-top: 1px solid var(--border-light); }
+    .subject-card.open .topic-list { display: block; }
+
+    .topic-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px 9px 62px;
+      font-size: 0.84rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .topic-row:last-child { border-bottom: none; }
+    .topic-name { flex: 1; min-width: 0; }
+
+    .source-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .source-cours { background: var(--tag-cours-bg); color: var(--tag-cours); }
+    .source-tutorat { background: var(--tag-tutorat-bg); color: var(--tag-tutorat); }
+    .source-les_deux { background: var(--tag-both-bg); color: var(--tag-both); }
+
+    .status-pill {
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 2px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .status-compris { background: var(--compris-bg); color: var(--compris); }
+    .status-en_cours { background: var(--en-cours-bg); color: var(--en-cours); }
+    .status-pas_commence { background: var(--pas-commence-bg); color: var(--pas-commence); }
+
+    .topic-note {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      font-style: italic;
+      max-width: 160px;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .empty-msg {
+      color: var(--text-faint);
+      font-style: italic;
+      padding: 9px 16px 9px 62px;
+      font-size: 0.84rem;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      margin-top: 18px;
+    }
+
+    @media (max-width: 500px) {
+      .topic-row { padding-left: 44px; gap: 6px; }
+      .topic-note { display: none; }
+      .progress-bar-bg { width: 36px; }
+      .stats-row { gap: 6px; }
+      .stat-box { padding: 8px; min-width: 70px; }
+      .stat-num { font-size: 1.1rem; }
+      .legend-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Suivi ESIEA <span class="semester-tag">S5</span></h1>
+    <p>Rayan · FISA · Alternance dev C/C++ · Objectif majeure Cybersécurité</p>
+  </div>
+
+  <div class="stats-row" id="stats"></div>
+
+  <div class="legend">
+    <div class="legend-group">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--compris)"></div> Compris</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--en-cours)"></div> En cours</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--pas-commence)"></div> Pas commencé</div>
+    </div>
+    <div class="legend-sep"></div>
+    <div class="legend-group">
+      <div class="legend-item"><span class="source-tag source-cours">Cours</span> En classe</div>
+      <div class="legend-item"><span class="source-tag source-tutorat">Tutorat</span> Avec Claude</div>
+      <div class="legend-item"><span class="source-tag source-les_deux">Les deux</span></div>
+    </div>
+  </div>
+
+  <div id="subjects"></div>
+  <div class="updated" id="updated"></div>
+
+  <script>
+    var STATUS_LABELS = {
+      compris: "Compris",
+      en_cours: "En cours",
+      pas_commence: "Pas commencé"
+    };
+    var SOURCE_LABELS = {
+      cours: "Cours",
+      tutorat: "Tutorat",
+      les_deux: "Les deux"
+    };
+
+    function render(subjects) {
+      var total = 0, compris = 0, enCours = 0;
+      subjects.forEach(function(s) {
+        (s.topics || []).forEach(function(t) {
+          total++;
+          if (t.status === "compris") compris++;
+          if (t.status === "en_cours") enCours++;
+        });
+      });
+
+      document.getElementById("stats").innerHTML =
+        '<div class="stat-box"><div class="stat-num" style="color:var(--accent)">' + subjects.length + '</div><div class="stat-label">Matières</div></div>' +
+        '<div class="stat-box"><div class="stat-num" style="color:var(--compris)">' + compris + '</div><div class="stat-label">Compris</div></div>' +
+        '<div class="stat-box"><div class="stat-num" style="color:var(--en-cours)">' + enCours + '</div><div class="stat-label">En cours</div></div>' +
+        '<div class="stat-box"><div class="stat-num" style="color:var(--text-faint)">' + (total - compris - enCours) + '</div><div class="stat-label">Restant</div></div>';
+
+      var container = document.getElementById("subjects");
+      container.innerHTML = "";
+
+      subjects.forEach(function(s) {
+        var topics = s.topics || [];
+        var done = topics.filter(function(t) { return t.status === "compris"; }).length;
+        var pct = topics.length ? Math.round((done / topics.length) * 100) : 0;
+        var barColor = pct === 100 ? "var(--compris)" : pct > 0 ? "var(--en-cours)" : "var(--pas-commence)";
+
+        var card = document.createElement("div");
+        card.className = "subject-card";
+
+        var topicsHtml = "";
+        topics.forEach(function(t) {
+          var sourceHtml = t.source ? '<span class="source-tag source-' + t.source + '">' + (SOURCE_LABELS[t.source] || t.source) + '</span>' : '';
+          topicsHtml += '<div class="topic-row">' +
+            '<span class="topic-name">' + t.name + '</span>' +
+            sourceHtml +
+            (t.note ? '<span class="topic-note" title="' + t.note + '">' + t.note + '</span>' : '') +
+            '<span class="status-pill status-' + t.status + '">' + (STATUS_LABELS[t.status] || t.status) + '</span>' +
+            '</div>';
+        });
+        if (topics.length === 0) {
+          topicsHtml = '<div class="empty-msg">Programme à venir</div>';
+        }
+
+        card.innerHTML =
+          '<div class="subject-header">' +
+            '<div class="subject-icon">' + (s.icon || "📘") + '</div>' +
+            '<div class="subject-info">' +
+              '<p class="subject-name">' + s.name + '</p>' +
+              (s.prof ? '<p class="subject-prof">' + s.prof + '</p>' : '') +
+            '</div>' +
+            '<div class="subject-progress">' +
+              '<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div></div>' +
+              '<span class="progress-pct">' + pct + '%</span>' +
+            '</div>' +
+            '<span class="chevron">▶</span>' +
+          '</div>' +
+          '<div class="topic-list">' + topicsHtml + '</div>';
+
+        card.querySelector(".subject-header").addEventListener("click", function() {
+          card.classList.toggle("open");
+        });
+
+        container.appendChild(card);
+      });
+
+      document.getElementById("updated").textContent = "Mis à jour le " + new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+    }
+
+    fetch("data.json")
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        data.sort(function(a, b) { return a.order - b.order; });
+        render(data);
+      })
+      .catch(function(err) {
+        document.getElementById("subjects").innerHTML =
+          '<p style="color:var(--text-muted);text-align:center;padding:40px;">Erreur de chargement : ' + err.message + '</p>';
+      });
+  </script>
+</body>
+</html>
